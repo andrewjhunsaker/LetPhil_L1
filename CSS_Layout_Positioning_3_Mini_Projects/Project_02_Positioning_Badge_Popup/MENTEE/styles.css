@@ -19,18 +19,32 @@
   Give .filler a big min-height so the page scrolls (if needed).
   Scrolling is required to test sticky + fixed.
 */
-
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
+body {
+  margin: 0;
+}
+.page {
+  font-family: sanf-serif;
+  margin: 0 auto;
+  max-width: 90%;
+  padding: 2vh;
+}
+.filter {
+  min-height: 1000px;
+}
 /* STEP 2 — Sticky header */
 /*
   Select .sticky-header and set position: sticky.
   Set top: 0 so it sticks to the top when you scroll.
   Add background + border so it looks like a real header.
 */
-
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: lightblue;
+  border: 2px solid darkgray;
+}
 /* STEP 3 — Make the card a relative positioning parent */
 /*
   Select .relative-parent and set position: relative.
@@ -39,6 +53,9 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+.relative-parent {
+  position: relative;
+}
 
 /* STEP 4 — Place the badge with absolute positioning */
 /*
@@ -47,7 +64,16 @@
   Example: top: 12px; right: 12px;
   Add padding, border-radius, background, and color so it looks like a badge.
 */
-
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 2vh;
+  border-radius: 10px;
+  background-color: salmon;
+  color: black;
+  font-weight: bold;
+}
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
 
 /* STEP 5 — Create a fixed floating button */
@@ -59,7 +85,15 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
+.chat-fab {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px lightgray;
+}
 /* STEP 6 — Reminder about static */
 /*
   Static is the default position.
@@ -68,3 +102,4 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+

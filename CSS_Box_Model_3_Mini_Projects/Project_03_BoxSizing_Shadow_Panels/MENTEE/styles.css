@@ -20,39 +20,38 @@
   Make .row a responsive grid: 3 columns when there is space, otherwise stack.
   Add gap so panels don't touch.
 */
-
-/* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
-/* STEP 2 — Give all panels the same base styling */
-/*
-  Select .panel: add background, border, border-radius, and padding.
-  This gives all panels the same starting point.
-*/
-
-/* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
-/* STEP 3 — Show the problem (default sizing) */
-/*
-  On .panel--default, increase padding (example: 28px).
-  Notice: with default sizing, extra padding can make it feel larger.
-*/
-
-/* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
-/* STEP 4 — Fix with box-sizing: border-box */
-/*
-  On .panel--borderbox, set box-sizing: border-box.
-  Give it the same padding value as .panel--default.
-  Observe: it stays consistent because padding/border stay inside the width.
-*/
-
-/* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
-/* STEP 5 — Add box-shadow (depth) */
-/*
-  On .panel--shadow, add a box-shadow (subtle but visible).
-  Confirm: shadow does not change layout spacing.
-*/
+body {
+  font-family: sans-serif;
+  margin: 0;
+  max-width: 100%;
+}
+.page {
+  max-width: 1200px;
+  height: 800px;
+  margin: 0 auto;
+  padding: 2vh;
+  background-color: lightgray;
+}
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.panel {
+  background-color: lightblue;
+  border: 5px solid red;
+  border-radius: 2%;
+  padding: 10px;
+}
+.panel--default {
+  padding: 30px;
+}
+.panel--borderbox {
+  box-sizing: border-box;
+  padding: 30px;
+}
+.panel--shadow {
+  box-shadow: 3px 5px 10px black;
+}
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
 

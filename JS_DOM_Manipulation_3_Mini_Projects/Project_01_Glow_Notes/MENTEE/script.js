@@ -23,6 +23,11 @@
 // Then console.log all 3 variables to prove your selectors worked.
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const noteInput = document.getElementById("noteInput");
+const addBtn = document.querySelector("#addBtn");
+const noteList = document.querySelector("#noteList");
+
+console.log(noteInput, addBtn, noteList);
 
 // --------------------------------------------
 // STEP 2 — Create a function that builds ONE note <li>
@@ -38,6 +43,21 @@
 // 6) return the li
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+function createNoteElement(noteText) {
+  const note = document.createElement("li");
+  const text = document.createElement("p");
+  const removeBtn = document.createElement("button");
+
+  note.classList.add("note");
+  text.classList.add("noteText");
+  text.textContent = noteText;
+  removeBtn.classList.add("btn", "danger", "removeBtn");
+  removeBtn.textContent = "Remove";
+
+  note.appendChild(text);
+  note.appendChild(removeBtn);
+  return note;
+}
 
 // --------------------------------------------
 // STEP 3 — Add click behavior to "Add Note"
@@ -53,6 +73,23 @@
 // 6) console.log("Added note:", text)
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+addBtn.addEventListener("click", () => {
+  const text = noteInput.value.trim();
+
+  if (text === "") {
+    return;
+  }
+
+  const note = createNoteElement(text);
+  note.classList.add("flash");
+  noteList.appendChild(note);
+  noteInput.value = "";
+  console.log("Added note:", text);
+
+  setTimeout(() => {
+    note.classList.remove("flash");
+  }, 300);
+});
 
 // --------------------------------------------
 // STEP 4 — Remove notes (event delegation)
@@ -67,6 +104,12 @@
 // 3) console.log("Removed a note")
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+noteList.addEventListener("click", (event) => {
+  if (event.target.classList.contains("removeBtn")) {
+    event.target.closest("li").remove();
+    console.log("Removed a note");
+  }
+});
 
 // --------------------------------------------
 // STEP 5 — BONUS: Add a "flash" class when adding

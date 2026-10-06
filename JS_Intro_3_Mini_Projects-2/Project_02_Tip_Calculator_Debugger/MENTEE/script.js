@@ -23,6 +23,13 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const billAmount = 520;
+const tipPercentWhole = 15;
+const peopleCount = 2;
+
+console.log("Bill amount:", billAmount);
+console.log("Tip percent:", tipPercentWhole);
+console.log("People:", peopleCount);
 
 // STEP 2 — Percentage logic (15% → decimal)
 /*
@@ -33,6 +40,8 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const tipPercentDecimal = tipPercentWhole / 100;
+console.log("Tip as a decimal:", tipPercentDecimal);
 
 // STEP 3 — Calculate the tip (multiplication)
 /*
@@ -41,6 +50,8 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const tipAmount = billAmount * tipPercentDecimal;
+console.log("Tip amount:", tipAmount);
 
 // STEP 4 — Calculate total bill (addition)
 /*
@@ -49,6 +60,8 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const totalAmount = billAmount + tipAmount;
+console.log("Total amount:", totalAmount);
 
 // STEP 5 — Split per person (division)
 /*
@@ -58,6 +71,8 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const perPerson = totalAmount / peopleCount;
+console.log("Amount per person:", perPerson);
 
 // STEP 6 — Use % (remainder) operator (requested)
 /*
@@ -68,6 +83,8 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const remainder = billAmount % peopleCount;
+console.log("Bill division remainder:", remainder);
 
 // STEP 7 — Debugging checks (>, <)
 /*
@@ -78,3 +95,6 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+console.log("Is the tip greater than zero?", tipAmount > 0);
+console.log("Is the total greater than the bill?", totalAmount > billAmount);
+console.log("Is the remainder less than the number of people?", remainder < peopleCount);

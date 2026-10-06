@@ -99,3 +99,117 @@ Reset should:
 */
 
 // ✅ WRITE YOUR CODE BELOW THIS LINE
+const minutesInput = document.getElementById("minutesInput");
+const secondsInput = document.getElementById("secondsInput");
+const startBtn = document.getElementById("startBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+const resetBtn = document.getElementById("resetBtn");
+const timeDisplay = document.getElementById("timeDisplay");
+const statusText = document.getElementById("statusText");
+const progressBarFill = document.getElementById("progressBarFill");
+
+let intervalId = null;
+let totalSeconds = 300;
+let remainingSeconds = 300;
+let isRunning = false;
+
+function readInputSeconds() {
+  const minutes = Number(minutesInput.value);
+  const seconds = Number(secondsInput.value);
+  const inputSeconds = minutes * 60 + seconds;
+
+  if (!Number.isFinite(inputSeconds) || inputSeconds <= 0) {
+    statusText.textContent = "Enter a sprint longer than 0 seconds";
+    return null;
+  }
+
+  return inputSeconds;
+}
+
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remaining = seconds % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(remaining).padStart(2, "0")}`;
+}
+
+function render() {
+  timeDisplay.textContent = formatTime(remainingSeconds);
+  const timePassed = totalSeconds - remainingSeconds;
+  const rawProgress = totalSeconds > 0 ? (timePassed / totalSeconds) * 100 : 0;
+  const progress = Math.min(100, Math.max(0, rawProgress));
+  progressBarFill.style.width = `${progress}%`;
+}
+
+function stopInterval() {
+  if (intervalId !== null) {
+    clearInterval(intervalId);
+  }
+
+  intervalId = null;
+  isRunning = false;
+}
+
+startBtn.addEventListener("click", () => {
+  if (isRunning) {
+    return;
+  }
+
+  if (remainingSeconds === 0) {
+    const inputSeconds = readInputSeconds();
+
+    if (inputSeconds === null) {
+      return;
+    }
+
+    totalSeconds = inputSeconds;
+    remainingSeconds = inputSeconds;
+    render();
+  }
+
+  isRunning = true;
+  startBtn.disabled = true;
+  pauseBtn.disabled = false;
+  statusText.textContent = "Running...";
+
+  intervalId = setInterval(() => {
+    remainingSeconds = Math.max(0, remainingSeconds - 1);
+    render();
+
+    if (remainingSeconds <= 0) {
+      stopInterval();
+      statusText.textContent = "✅ Sprint Complete!";
+      startBtn.disabled = false;
+      pauseBtn.disabled = true;
+    }
+  }, 1000);
+});
+
+pauseBtn.addEventListener("click", () => {
+  stopInterval();
+  statusText.textContent = "Paused";
+  startBtn.disabled = false;
+  pauseBtn.disabled = true;
+});
+
+resetBtn.addEventListener("click", () => {
+  stopInterval();
+  const inputSeconds = readInputSeconds();
+
+  if (inputSeconds === null) {
+    totalSeconds = 0;
+    remainingSeconds = 0;
+    render();
+    startBtn.disabled = false;
+    pauseBtn.disabled = true;
+    return;
+  }
+
+  totalSeconds = inputSeconds;
+  remainingSeconds = inputSeconds;
+  render();
+  statusText.textContent = "Idle — set a sprint and press Start";
+  startBtn.disabled = false;
+  pauseBtn.disabled = true;
+});
+
+render();

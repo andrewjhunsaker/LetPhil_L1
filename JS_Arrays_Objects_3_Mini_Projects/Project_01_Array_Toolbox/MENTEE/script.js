@@ -24,6 +24,9 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const groceries = ["eggs", "milk", "rice", "coffee"];
+console.log(groceries);
+console.log("length:", groceries.length);
 
 /* -----------------------------------------
    STEP 2 — Read and update by index
@@ -34,6 +37,9 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+console.log(groceries[0]);
+groceries[1] = "oat milk";
+console.log(groceries);
 
 /* -----------------------------------------
    STEP 3 — push + pop (end of array)
@@ -46,6 +52,11 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+groceries.push("chocolate");
+console.log(groceries);
+const removedEnd = groceries.pop();
+console.log(removedEnd);
+console.log(groceries);
 
 /* -----------------------------------------
    STEP 4 — unshift + shift (start of array)
@@ -58,6 +69,11 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+groceries.unshift("water");
+console.log(groceries);
+const removedStart = groceries.shift();
+console.log(removedStart);
+console.log(groceries);
 
 /* -----------------------------------------
    STEP 5 — splice (middle edit)
@@ -74,3 +90,8 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const removedMiddle = groceries.splice(2, 1);
+console.log(removedMiddle);
+console.log(groceries);
+groceries.splice(1, 0, "tea");
+console.log(groceries);

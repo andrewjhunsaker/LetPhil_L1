@@ -21,6 +21,27 @@
   Use display:flex with gap OR grid with gap to separate boxes.
 */
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  max-width: 100%;
+}
+
+.page {
+  max-width: 100%;
+  padding: 0 5% 0 5%;
+}
+
+.playground {
+  background-color: lightblue;
+  padding: 2vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
 
 /* STEP 2 — Base box size (width/height) */
@@ -28,34 +49,25 @@
   Select .box: give it min-height so it looks like a real box.
   Give .box a background color so the content area is visible.
 */
+.box {
+  min-height: 300px;
+  background-color: lightsalmon;
+  padding: 20px;
+  border: 5px solid darkgray;
+}
 
-/* ✅ WRITE YOUR CSS UNDER THIS LINE */
+.box--two {
+  border: 10px solid darkgray;
+}
 
-/* STEP 3 — Padding (inside space) */
-/*
-  Add padding to .box (example: 16px).
-  Explain: padding increases space between content and border.
-*/
+.box--one {
+  padding: 30px;
+  margin-bottom: 20px;
+}
 
-/* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
-/* STEP 4 — Border (outline) */
-/*
-  Add a border to .box (example: 2px solid).
-  On .box--two ONLY: make border thickness bigger (example: 8px).
-  Observe: border changes the visible size of the box.
-*/
-
-/* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
-/* STEP 5 — Margin (outside space) */
-/*
-  On .box--one ONLY: add margin-bottom (example: 24px).
-  Explain: margin is outside the border—pushes other boxes away.
-*/
-
-/* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
+.box--three {
+  padding: 40px;
+}
 /* STEP 6 — Force a comparison */
 /*
   On .box--three: make padding very big (example: 32px).

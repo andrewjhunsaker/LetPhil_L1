@@ -13,6 +13,11 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+body {
+  margin: 0;
+  font-family:monospace;
+  background-color: lightgrey;
+}
 
 /* STEP 2 — Hero gradient background */
 /*
@@ -23,7 +28,11 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
+.hero {
+  background-image:linear-gradient(135deg, salmon, lightblue);
+  padding: 2rem;
+  border-radius: 5px;
+}
 /* STEP 3 — Text colors on top of gradient */
 /*
   If the hero background is dark, use light text (color: white-ish).
@@ -32,7 +41,17 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+.eyebrow, .hero__title, .hero__desc {
+  color: black;
+}
+.hero__title {
+  line-height: 1.1rem;
+  font-size: 28px;
+}
 
+.hero__desc {
+
+}
 /* STEP 4 — Button backgrounds + text colors */
 /*
   All .btn elements should look like buttons (padding, border-radius, display:inline-block).

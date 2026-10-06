@@ -112,3 +112,98 @@ resetBtn should call resetUI()
 */
 
 // ✅ WRITE YOUR CODE BELOW THIS LINE
+const openBtn = document.getElementById("openBtn");
+const resetBtn = document.getElementById("resetBtn");
+const thenModeRadio = document.getElementById("thenModeRadio");
+const asyncModeRadio = document.getElementById("asyncModeRadio");
+const loadingText = document.getElementById("loadingText");
+const resultCard = document.getElementById("resultCard");
+const rewardEmoji = document.getElementById("rewardEmoji");
+const rewardName = document.getElementById("rewardName");
+const rewardMeta = document.getElementById("rewardMeta");
+const errorCard = document.getElementById("errorCard");
+const errorMessage = document.getElementById("errorMessage");
+
+const rewards = [
+  { emoji: "🧿", name: "Neon Charm", rarity: "Rare", points: 120 },
+  { emoji: "🚀", name: "Rocket Boost", rarity: "Epic", points: 250 },
+  { emoji: "💎", name: "Crystal Core", rarity: "Legendary", points: 500 },
+  { emoji: "⭐", name: "Star Token", rarity: "Common", points: 50 },
+];
+
+function loadReward() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (Math.random() < 0.7) {
+        const rewardIndex = Math.floor(Math.random() * rewards.length);
+        resolve(rewards[rewardIndex]);
+      } else {
+        reject("The reward signal was lost. Please try again.");
+      }
+    }, 1200);
+  });
+}
+
+function showLoading() {
+  loadingText.hidden = false;
+  loadingText.textContent = "Loading... decoding reward signal...";
+  resultCard.hidden = true;
+  errorCard.hidden = true;
+  openBtn.disabled = true;
+}
+
+function showSuccess(reward) {
+  loadingText.hidden = true;
+  resultCard.hidden = false;
+  rewardEmoji.textContent = reward.emoji;
+  rewardName.textContent = reward.name;
+  rewardMeta.textContent = `${reward.rarity} · ${reward.points} points`;
+  errorCard.hidden = true;
+  openBtn.disabled = false;
+}
+
+function showError(message) {
+  loadingText.hidden = true;
+  errorCard.hidden = false;
+  errorMessage.textContent = message;
+  resultCard.hidden = true;
+  openBtn.disabled = false;
+}
+
+function resetUI() {
+  loadingText.hidden = true;
+  resultCard.hidden = true;
+  errorCard.hidden = true;
+  rewardEmoji.textContent = "";
+  rewardName.textContent = "";
+  rewardMeta.textContent = "";
+  errorMessage.textContent = "";
+  openBtn.disabled = false;
+}
+
+function openWithThenCatch() {
+  loadReward()
+    .then((reward) => showSuccess(reward))
+    .catch((error) => showError(error));
+}
+
+async function openWithAsyncAwait() {
+  try {
+    const reward = await loadReward();
+    showSuccess(reward);
+  } catch (error) {
+    showError(error);
+  }
+}
+
+openBtn.addEventListener("click", () => {
+  showLoading();
+
+  if (thenModeRadio.checked) {
+    openWithThenCatch();
+  } else if (asyncModeRadio.checked) {
+    openWithAsyncAwait();
+  }
+});
+
+resetBtn.addEventListener("click", resetUI);

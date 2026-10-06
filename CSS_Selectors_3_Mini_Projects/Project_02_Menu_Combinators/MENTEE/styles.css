@@ -4,19 +4,15 @@
   IMPORTANT:
   - After each step, save and refresh the browser.
 */
-
-/* STEP 1 — Descendant combinator */
-/*
-  Select all <a> tags inside .menu using a descendant selector.
-  Change text color.
-*/
-
-/* STEP 2 — Child combinator */
-/*
-  Use > to select only direct li children of ul.
-  Add padding to those li elements.
-*/
-
+.menu a {
+  color: grey;
+}
+ul > li {
+  padding: 2vh;
+}
+li:first-child + li {
+  background-color: lightblue;
+}
 /* STEP 3 — Adjacent sibling */
 /*
   Use + to style the li immediately after the first one.

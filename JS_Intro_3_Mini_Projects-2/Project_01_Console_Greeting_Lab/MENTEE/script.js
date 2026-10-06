@@ -24,6 +24,7 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+console.log("Hello JavaScript!");
 
 // STEP 2 — Variables (let vs const)
 /*
@@ -35,6 +36,11 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const name = "Andy";
+let mood = "excited";
+
+console.log("Name:", name);
+console.log("Mood:", mood);
 
 // STEP 3 — Data types (string, number, boolean)
 /*
@@ -46,6 +52,13 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const favoriteFood = "pizza";
+const age = 25;
+const isLearningJS = true;
+
+console.log("Favorite food:", favoriteFood);
+console.log("Age:", age);
+console.log("Learning JavaScript:", isLearningJS);
 
 // STEP 4 — Operators (+ and -) mini demo
 /*
@@ -57,6 +70,13 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const points = 10;
+const pointsAfterWin = points + 5;
+const pointsAfterLoss = points - 3;
+
+console.log("Starting points:", points);
+console.log("Points after a win:", pointsAfterWin);
+console.log("Points after a loss:", pointsAfterLoss);
 
 // STEP 5 — Curly braces practice (if/else block)
 /*
@@ -67,3 +87,8 @@
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+if (isLearningJS === true) {
+  console.log("Keep going!");
+} else {
+  console.log("Start today!");
+}

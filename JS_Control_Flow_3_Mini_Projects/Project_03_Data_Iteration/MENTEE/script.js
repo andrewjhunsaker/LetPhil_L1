@@ -21,6 +21,8 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const favoriteCities = ["Bogota", "Medellin", "Tokyo", "London"];
+console.log("Favorite cities:", favoriteCities);
 
 /* -----------------------------------------
    STEP 2 — forEach (array loop)
@@ -33,6 +35,9 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+favoriteCities.forEach((city, index) => {
+  console.log(`City #${index}: ${city}`);
+});
 
 /* -----------------------------------------
    STEP 3 — for...of (array loop)
@@ -44,6 +49,9 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+for (const city of favoriteCities) {
+  console.log(city.toUpperCase());
+}
 
 /* -----------------------------------------
    STEP 4 — Create an object (for...in)
@@ -57,6 +65,11 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const profile = {
+  name: "Andy",
+  age: 25,
+  isMentor: false,
+};
 
 /* -----------------------------------------
    STEP 5 — for...in (object loop)
@@ -69,6 +82,9 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+for (const key in profile) {
+  console.log(`${key} => ${profile[key]}`);
+}
 
 /* -----------------------------------------
    STEP 6 — Mini challenge (combine loops)
@@ -85,3 +101,14 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const students = [
+  { name: "Ana", level: 1 },
+  { name: "Leo", level: 2 },
+  { name: "Mia", level: 1 },
+];
+
+students.forEach((student) => {
+  if (student.level === 1) {
+    console.log(student);
+  }
+});

@@ -22,6 +22,11 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add(2, 3));
 
 /* -----------------------------------------
    STEP 2 — calcTotal(price, qty, taxRate)
@@ -37,6 +42,13 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+function calcTotal(price, qty, taxRate) {
+  const subtotal = price * qty;
+  const tax = subtotal * taxRate;
+  return subtotal + tax;
+}
+
+console.log(calcTotal(10, 3, 0.16));
 
 /* -----------------------------------------
    STEP 3 — Arrow function version
@@ -48,6 +60,13 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const calcTotalArrow = (price, qty, taxRate) => {
+  const subtotal = price * qty;
+  const tax = subtotal * taxRate;
+  return subtotal + tax;
+};
+
+console.log(calcTotalArrow(10, 3, 0.16));
 
 /* -----------------------------------------
    STEP 4 — Function expression: formatMoney(amount)
@@ -62,6 +81,11 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const formatMoney = function (amount) {
+  return `$${amount.toFixed(2)}`;
+};
+
+console.log(formatMoney(10));
 
 /* -----------------------------------------
    STEP 5 — Combine your functions
@@ -72,3 +96,5 @@ RULES:
 */
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const total = calcTotalArrow(10, 3, 0.16);
+console.log(formatMoney(total));

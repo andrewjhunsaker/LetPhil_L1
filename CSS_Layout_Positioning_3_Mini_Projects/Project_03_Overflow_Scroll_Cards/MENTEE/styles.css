@@ -21,6 +21,23 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+.page {
+  margin: 0 auto;
+  max-width: 90%;
+  padding: 5vh;
+}
+.row {
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+}
+.box {
+  height: 200px;
+}
 
 /* STEP 2 — Base box styling */
 /*
@@ -30,6 +47,15 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+.box {
+  background-color: lightgray;
+  padding: 2rem;
+  border-radius: 5px;
+  height: 180px;
+}
+.long-content {
+  white-space: nowrap;
+}
 
 /* STEP 3 — overflow: visible */
 /*
@@ -38,6 +64,9 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+.box--visible {
+  overflow: visible;
+}
 
 /* STEP 4 — overflow: hidden */
 /*
@@ -46,6 +75,9 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+.box--hidden {
+  overflow: hidden;
+}
 
 /* STEP 5 — overflow: scroll */
 /*
@@ -54,6 +86,9 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+.box--scroll {
+  overflow: scroll;
+}
 
 /* STEP 6 — overflow: auto */
 /*
@@ -62,3 +97,7 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+
+.box--auto {
+  overflow: auto;
+}

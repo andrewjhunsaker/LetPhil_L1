@@ -32,6 +32,12 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const countValueEl = document.querySelector("#countValue");
+const increaseBtnEl = document.querySelector("#increaseBtn");
+const resetBtnEl = document.querySelector("#resetBtn");
+const toggleBtnEl = document.querySelector("#toggleBtn");
+const panelEl = document.querySelector("#panel");
+const debugTextEl = document.querySelector("#debugText");
 
 // =====================================================
 // STEP 2) CREATE a "state" variable to track the count
@@ -47,6 +53,7 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+let count = 0;
 
 // =====================================================
 // STEP 3) CLICK EVENT: Increase button
@@ -62,6 +69,12 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+increaseBtnEl.addEventListener("click", () => {
+  count += 1;
+  countValueEl.textContent = count;
+  console.log("Count:", count);
+  debugTextEl.textContent = "Last action: +1";
+});
 
 // =====================================================
 // STEP 4) CLICK EVENT: Reset button
@@ -75,6 +88,12 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+resetBtnEl.addEventListener("click", () => {
+  count = 0;
+  countValueEl.textContent = count;
+  console.log("Counter reset");
+  debugTextEl.textContent = "Last action: reset";
+});
 
 // =====================================================
 // STEP 5) CLICK EVENT: Toggle the panel
@@ -94,6 +113,12 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+toggleBtnEl.addEventListener("click", () => {
+  const isHidden = panelEl.classList.toggle("isHidden");
+  debugTextEl.textContent = isHidden
+    ? "Last action: panel hidden"
+    : "Last action: panel shown";
+});
 
 // =====================================================
 // STEP 6) DEBUG CHECK (optional but recommended)
@@ -104,3 +129,11 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+console.log(
+  countValueEl,
+  increaseBtnEl,
+  resetBtnEl,
+  toggleBtnEl,
+  panelEl,
+  debugTextEl,
+);

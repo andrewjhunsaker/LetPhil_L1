@@ -29,6 +29,13 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const bodyEl = document.body;
+const themeSelectEl = document.querySelector("#themeSelect");
+const themeStatusEl = document.querySelector("#themeStatus");
+const listenBtnEl = document.querySelector("#listenBtn");
+const stopBtnEl = document.querySelector("#stopBtn");
+const startBtnEl = document.querySelector("#startBtn");
+const clickCountTextEl = document.querySelector("#clickCountText");
 
 // =====================================================
 // STEP 2) CHANGE EVENT: Theme dropdown
@@ -44,6 +51,12 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+themeSelectEl.addEventListener("change", () => {
+  const selectedTheme = themeSelectEl.value;
+  bodyEl.classList.remove("theme-space", "theme-sunset", "theme-ocean");
+  bodyEl.classList.add(`theme-${selectedTheme}`);
+  themeStatusEl.textContent = `Theme: ${selectedTheme}`;
+});
 
 // =====================================================
 // STEP 3) Create state for click counting
@@ -52,6 +65,7 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+let clickCount = 0;
 
 // =====================================================
 // STEP 4) Create a NAMED handler function for the listen button
@@ -73,6 +87,11 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+function handleListenClick() {
+  clickCount += 1;
+  clickCountTextEl.textContent = `Button clicks: ${clickCount}`;
+  listenBtnEl.textContent = `Click Me (${clickCount})`;
+}
 
 // =====================================================
 // STEP 5) Attach the click listener to the listen button
@@ -81,6 +100,7 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+listenBtnEl.addEventListener("click", handleListenClick);
 
 // =====================================================
 // STEP 6) STOP button: removeEventListener
@@ -92,6 +112,10 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+stopBtnEl.addEventListener("click", () => {
+  listenBtnEl.removeEventListener("click", handleListenClick);
+  listenBtnEl.textContent = "Click Me (listener OFF)";
+});
 
 // =====================================================
 // STEP 7) START button: addEventListener back
@@ -103,6 +127,10 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+startBtnEl.addEventListener("click", () => {
+  listenBtnEl.addEventListener("click", handleListenClick);
+  listenBtnEl.textContent = "Click Me (listener ON)";
+});
 
 // =====================================================
 // STEP 8) DEBUG CHECK
@@ -111,3 +139,12 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+console.log(
+  bodyEl,
+  themeSelectEl,
+  themeStatusEl,
+  listenBtnEl,
+  stopBtnEl,
+  startBtnEl,
+  clickCountTextEl,
+);

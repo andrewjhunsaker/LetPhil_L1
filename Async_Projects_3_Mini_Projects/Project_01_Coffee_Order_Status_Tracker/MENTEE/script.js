@@ -128,3 +128,96 @@ Reset should always bring you back to Idle:
 */
 
 // ✅ WRITE YOUR CODE BELOW THIS LINE
+const placeBtn = document.getElementById("placeBtn");
+const cancelBtn = document.getElementById("cancelBtn");
+const resetBtn = document.getElementById("resetBtn");
+const statusText = document.getElementById("statusText");
+const orderIdText = document.getElementById("orderIdText");
+const stepPending = document.getElementById("stepPending");
+const stepBrewing = document.getElementById("stepBrewing");
+const stepReady = document.getElementById("stepReady");
+
+let currentOrderId = "";
+const timeoutIds = [];
+const steps = [stepPending, stepBrewing, stepReady];
+
+function resetTimeline() {
+  steps.forEach((step) => step.classList.remove("active", "done"));
+  setStatus("Idle", "neutral");
+  orderIdText.textContent = "—";
+  currentOrderId = "";
+}
+
+function setStep(stepElement, state) {
+  if (state === "active") {
+    stepElement.classList.remove("done");
+    stepElement.classList.add("active");
+  }
+
+  if (state === "done") {
+    stepElement.classList.remove("active");
+    stepElement.classList.add("done");
+  }
+}
+
+function setStatus(text, tone) {
+  statusText.textContent = text;
+  statusText.classList.remove("toneNeutral", "toneWarn", "toneGood", "toneBad");
+  const toneClasses = {
+    neutral: "toneNeutral",
+    warn: "toneWarn",
+    good: "toneGood",
+    bad: "toneBad",
+  };
+  statusText.classList.add(toneClasses[tone]);
+}
+
+function clearAllTimeouts() {
+  timeoutIds.forEach((timeoutId) => clearTimeout(timeoutId));
+  timeoutIds.length = 0;
+}
+
+placeBtn.addEventListener("click", () => {
+  console.log("SYNC: Place Order clicked");
+  clearAllTimeouts();
+  resetTimeline();
+
+  const randomDigits = Math.floor(1000 + Math.random() * 9000);
+  currentOrderId = `CF-${randomDigits}`;
+  orderIdText.textContent = currentOrderId;
+  placeBtn.disabled = true;
+  cancelBtn.disabled = false;
+  setStatus("Pending", "warn");
+  setStep(stepPending, "active");
+
+  const brewingTimeoutId = setTimeout(() => {
+    setStep(stepPending, "done");
+    setStep(stepBrewing, "active");
+    setStatus("Brewing", "warn");
+  }, 1500);
+
+  const readyTimeoutId = setTimeout(() => {
+    setStep(stepBrewing, "done");
+    setStep(stepReady, "active");
+    setStatus("Ready", "good");
+    cancelBtn.disabled = true;
+    placeBtn.disabled = false;
+  }, 3500);
+
+  timeoutIds.push(brewingTimeoutId, readyTimeoutId);
+});
+
+cancelBtn.addEventListener("click", () => {
+  console.log("SYNC: Cancel clicked");
+  clearAllTimeouts();
+  setStatus("Cancelled", "bad");
+  placeBtn.disabled = false;
+  cancelBtn.disabled = true;
+});
+
+resetBtn.addEventListener("click", () => {
+  clearAllTimeouts();
+  resetTimeline();
+  placeBtn.disabled = false;
+  cancelBtn.disabled = true;
+});

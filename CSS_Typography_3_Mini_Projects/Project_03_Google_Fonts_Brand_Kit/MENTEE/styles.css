@@ -1,3 +1,5 @@
+@import url('https://googleapis.com');
+
 /*
   🧠 PROJECT: Brand Kit — Importing Google Fonts + Applying Typography System
 
@@ -21,7 +23,6 @@
   🎯 GOAL: Import Google Fonts and apply a consistent typography system across a landing section.
 */
 
-/* STEP 1 — Import Google Fonts */
 /*
   Pick TWO fonts from Google Fonts:
     - One display font for headings (example: 'Poppins' or 'Playfair Display')
@@ -33,9 +34,12 @@
   
   After importing, test by setting font-family and seeing the font actually change.
 */
-
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+:root {
+  --display: 'Poppings', 'Playfair Display';
+  --readable: 'Inter', 'Robato';
 
+}
 /* STEP 2 — Base typography system */
 /*
   Select body and set:
@@ -46,15 +50,28 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  background-color: lightblue;
+}
+.page {
+  max-width: 90%;
+  padding: 5vh;
+}
 /* STEP 3 — Headings use the DISPLAY font */
 /*
   Select .hero__title and set font-family to your DISPLAY font.
   Set font-size big (example: 2.6rem) and font-weight (example: 700).
   Adjust line-height so the big title looks tight (example: 1.1).
 */
-
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+.hero__title {
+  font-family: var(--display); 
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.1rem;
+}
 
 /* STEP 4 — Brand label styling */
 /*
@@ -66,7 +83,11 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
-
+.brand {
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
 /* STEP 5 — Button typography + decoration */
 /*
   Select .hero__btn and style it like a button.
@@ -75,3 +96,12 @@
 */
 
 /* ✅ WRITE YOUR CSS UNDER THIS LINE */
+.hero__btn {
+  background-color: lightgray;
+  border-radius: 5px;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.2rem;
+  color: black;
+}

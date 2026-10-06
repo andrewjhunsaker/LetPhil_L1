@@ -29,6 +29,12 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const moodCardEl = document.querySelector("#moodCard");
+const moodTextEl = document.querySelector("#moodText");
+const typeInputEl = document.querySelector("#typeInput");
+const mirrorTextEl = document.querySelector("#mirrorText");
+const lastKeyEl = document.querySelector("#lastKey");
+const eventTypeEl = document.querySelector("#eventType");
 
 // =====================================================
 // STEP 2) HOVER IN: mouseover on the card
@@ -43,6 +49,11 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+moodCardEl.addEventListener("mouseover", () => {
+  moodCardEl.classList.add("isHappy");
+  moodTextEl.textContent = "Current mood: happy";
+  console.log("Mood card entered");
+});
 
 // =====================================================
 // STEP 3) HOVER OUT: mouseout on the card
@@ -55,6 +66,11 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+moodCardEl.addEventListener("mouseout", () => {
+  moodCardEl.classList.remove("isHappy");
+  moodTextEl.textContent = "Current mood: calm";
+  console.log("Mood card left");
+});
 
 // =====================================================
 // STEP 4) KEYDOWN: show live typing + key info
@@ -70,6 +86,12 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+typeInputEl.addEventListener("keydown", (event) => {
+  mirrorTextEl.textContent = typeInputEl.value;
+  lastKeyEl.textContent = event.key;
+  eventTypeEl.textContent = "keydown";
+  console.log(event.key);
+});
 
 // =====================================================
 // STEP 5) KEYUP: update event label
@@ -82,6 +104,15 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+typeInputEl.addEventListener("keyup", () => {
+  mirrorTextEl.textContent = typeInputEl.value;
+  eventTypeEl.textContent = "keyup";
+  moodCardEl.classList.add("isFocused");
+
+  setTimeout(() => {
+    moodCardEl.classList.remove("isFocused");
+  }, 200);
+});
 
 // =====================================================
 // STEP 6) DEBUG CHECK
@@ -90,3 +121,11 @@
 // =====================================================
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+console.log(
+  moodCardEl,
+  moodTextEl,
+  typeInputEl,
+  mirrorTextEl,
+  lastKeyEl,
+  eventTypeEl,
+);

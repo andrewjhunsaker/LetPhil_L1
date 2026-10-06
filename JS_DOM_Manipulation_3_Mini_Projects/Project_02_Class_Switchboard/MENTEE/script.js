@@ -24,6 +24,13 @@
 // Then console.log each one.
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+const highlightBtn = document.querySelector("#highlightBtn");
+const shakeBtn = document.querySelector("#shakeBtn");
+const resetBtn = document.querySelector("#resetBtn");
+const messageBox = document.querySelector("#messageBox");
+const statusText = document.querySelector("#statusText");
+
+console.log(highlightBtn, shakeBtn, resetBtn, messageBox, statusText);
 
 // --------------------------------------------
 // STEP 2 — Toggle highlight class
@@ -38,6 +45,15 @@
 // Hint: messageBox.classList.contains("highlight")
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+highlightBtn.addEventListener("click", () => {
+  messageBox.classList.toggle("highlight");
+
+  if (messageBox.classList.contains("highlight")) {
+    statusText.textContent = "highlight ON";
+  } else {
+    statusText.textContent = "highlight OFF";
+  }
+});
 
 // --------------------------------------------
 // STEP 3 — Shake the box (temporary class)
@@ -49,6 +65,15 @@
 // 4) after removing: statusText.textContent = "done shaking"
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+shakeBtn.addEventListener("click", () => {
+  messageBox.classList.add("shake");
+  statusText.textContent = "shaking...";
+
+  setTimeout(() => {
+    messageBox.classList.remove("shake");
+    statusText.textContent = "done shaking";
+  }, 350);
+});
 
 // --------------------------------------------
 // STEP 4 — Reset everything
@@ -59,3 +84,7 @@
 // 3) statusText.textContent = "reset complete"
 
 // ✅ WRITE YOUR CODE UNDER THIS LINE
+resetBtn.addEventListener("click", () => {
+  messageBox.classList.remove("highlight", "shake");
+  statusText.textContent = "reset complete";
+});
